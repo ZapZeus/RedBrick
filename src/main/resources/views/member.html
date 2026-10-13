@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Account | Red Bricks Library</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo">Red Bricks Library</a>
+
+            <div class="nav-links">
+                <a href="/catalogue">Catalogue</a>
+                <a href="/members">Members</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="member-account">
+
+        <a href="/members" class="back-link">
+            &larr; Back to Members
+        </a>
+
+        <!-- Member profile -->
+        <section class="account-header">
+
+            <div class="member-avatar" id="member-avatar">--</div>
+
+            <div class="account-identity">
+                <p class="account-label">MEMBER ACCOUNT</p>
+                <h1 id="member-name">Loading member...</h1>
+                <p id="member-id"></p>
+            </div>
+
+        </section>
+
+        <!-- Account statistics -->
+        <section class="account-stats">
+
+            <div class="stat-card">
+                <p>Books on Loan</p>
+                <h2 id="loan-count">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Reservations</p>
+                <h2 id="reservation-count">0</h2>
+            </div>
+
+        </section>
+
+        <!-- Borrowed books -->
+        <section class="account-section">
+
+            <div class="section-heading">
+                <h2>Currently Borrowed</h2>
+
+                <a href="/catalogue" class="button-link">
+                    Browse Books
+                </a>
+            </div>
+
+            <div id="member-loans" class="account-list">
+                <p>Loan information is not available yet.</p>
+            </div>
+
+        </section>
+
+        <!-- Reservations -->
+        <section class="account-section">
+
+            <div class="section-heading">
+                <h2>Reservations</h2>
+            </div>
+
+            <div id="member-reservations" class="account-list">
+                <p>Reservation information is not available yet.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="account-footer">
+        <p>&copy; 2026 Red Bricks Library</p>
+    </footer>
+
+    <script>
+        async function loadMember() {
+
+            // Read member ID from URL: /member?id=2
+            const params = new URLSearchParams(window.location.search);
+            const memberId = Number(params.get("id"));
+
+            const nameElement = document.getElementById("member-name");
+            const idElement = document.getElementById("member-id");
+            const avatarElement = document.getElementById("member-avatar");
+
+            // Validate the member ID
+            if (!Number.isSafeInteger(memberId) || memberId <= 0) {
+                nameElement.textContent = "Invalid member ID";
+                return;
+            }
+
+            try {
+
+                // Request member data from Java ApiController
+                const response = await fetch("/api/members");
+
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve members");
+                }
+
+                // Convert JSON response into JavaScript objects
+                const members = await response.json();
+
+                // Find the member matching the URL ID
+                const member = members.find(
+                    m => m.id === memberId
+                );
+
+                if (!member) {
+                    nameElement.textContent = "Member not found";
+                    return;
+                }
+
+                // Display the member's name
+                nameElement.textContent =
+                    member.firstName + " " + member.lastName;
+
+                // Display member ID
+                idElement.textContent = "Member #" + member.id;
+
+                // Display initials inside avatar
+                avatarElement.textContent =
+                    member.firstName.charAt(0).toUpperCase() +
+                    member.lastName.charAt(0).toUpperCase();
+
+                // Update browser tab title
+                document.title =
+                    member.firstName + " " + member.lastName +
+                    " | Red Bricks Library";
+
+            } catch (error) {
+
+                console.error("Member loading error:", error);
+
+                nameElement.textContent = "Unable to load member";
+                idElement.textContent = "";
+                avatarElement.textContent = "--";
+            }
+        }
+
+        // Run when the page loads
+        loadMember();
+    </script>
+
+</body>
+
+</html>

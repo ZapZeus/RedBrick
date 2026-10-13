@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members | Red Bricks Library</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="/" class="logo">RED BRICKS LIBRARY</a>
+
+        <div class="nav-links">
+            <a href="/catalogue">Catalogue</a>
+            <a href="/members">Members</a>
+            <a href="#admin-login">Admin</a>
+        </div>
+
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h1>Members</h1>
+
+            <p>
+                Find your library account to view your loans and reservations.
+            </p>
+
+            <form class="search-form" id="search-form">
+
+                <input type="text"
+                       id="member-search"
+                       name="search"
+                       placeholder="Search member name">
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+        <section>
+
+            <h2>Library Members</h2>
+
+            <div class="member-list" id="member-list">
+                <p>Loading members...</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ADMIN LOGIN POPUP -->
+
+    <div id="admin-login" class="modal">
+
+        <div class="login-box">
+
+            <a href="#" class="close">&times;</a>
+
+            <h2>Admin Login</h2>
+
+            <form action="/admin">
+
+                <label for="username">Username</label>
+                <input type="text"
+                       id="username"
+                       name="username"
+                       required>
+
+                <label for="password">Password</label>
+                <input type="password"
+                       id="password"
+                       name="password"
+                       required>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Red Bricks Library</p>
+    </footer>
+
+    <script>
+
+        // Store the members retrieved from Java
+        let allMembers = [];
+
+        // Load members from our Java API
+        async function loadMembers() {
+
+            const memberList = document.getElementById("member-list");
+
+            try {
+
+                const response = await fetch("/api/members");
+
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve members");
+                }
+
+                allMembers = await response.json();
+
+                displayMembers(allMembers);
+
+            } catch (error) {
+
+                memberList.textContent = "Unable to load members.";
+
+                console.error("Member loading error:", error);
+            }
+        }
+
+        // Display members on the webpage
+        function displayMembers(members) {
+
+            const memberList = document.getElementById("member-list");
+
+            // Clear the existing list
+            memberList.replaceChildren();
+
+            if (members.length === 0) {
+
+                const message = document.createElement("p");
+                message.textContent = "No members found.";
+
+                memberList.appendChild(message);
+                return;
+            }
+
+            members.forEach(member => {
+
+                // Creates a member row
+                const row = document.createElement("div");
+                row.className = "member-row";
+
+                //Adds member name
+                const name = document.createElement("span");
+                name.textContent =
+                    member.firstName + " " + member.lastName;
+
+                // BUTTONS!!!
+                const link = document.createElement("a");
+
+                link.href =
+                    "/member?id=" + encodeURIComponent(member.id);
+
+                link.className = "button-link";
+                link.textContent = "View Account";
+
+                // Add everything to the row
+                row.appendChild(name);
+                row.appendChild(link);
+
+                // Adds a row,
+                memberList.appendChild(row);
+
+            });
+        }
+
+        // Searching for members by name
+        document.getElementById("search-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const search = document
+                    .getElementById("member-search")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+                const filteredMembers = allMembers.filter(member => {
+                    
+                    const fullName =
+                        (member.firstName + " " + member.lastName)
+                        .toLowerCase();
+
+                    return fullName.includes(search);
+
+                });
+
+                displayMembers(filteredMembers);
+
+            });
+
+        // Loads in the member when opened
+        loadMembers();
+
+    </script>
+
+</body>
+
+</html>

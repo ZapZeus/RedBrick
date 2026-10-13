@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue | Red Bricks Library</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="/index" class="logo">RED BRICKS LIBRARY</a>
+
+        <div class="nav-links">
+            <a href="/catalogue">Catalogue</a>
+            <a href="/members">Members</a>
+            <a href="#admin-login">Admin</a>
+        </div>
+
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h1>Library Catalogue</h1>
+
+            <p>
+                Search the Red Bricks Library collection by title,
+                author or ISBN.
+            </p>
+
+            <form class="search-form">
+
+                <input type="text"
+                       name="search"
+                       placeholder="Title, author or ISBN">
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+        <section>
+
+            <h2>Library Collection</h2>
+
+            <div class="book-grid">
+
+                <div class="book-card">
+
+                    <h3>The Silent Forest</h3>
+
+                    <p>Emily Carter</p>
+
+                    <p>
+                        <strong>ISBN:</strong>
+                        978-0-321-14653-0
+                    </p>
+
+                    <p>
+                        <strong>Format:</strong>
+                        Physical
+                    </p>
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                    <br><br>
+
+                    <button>Borrow</button>
+
+                </div>
+
+                <div class="book-card">
+
+                    <h3>Rails of Destiny</h3>
+
+                    <p>Mark Holloway</p>
+
+                    <p>
+                        <strong>ISBN:</strong>
+                        978-1-4028-9462-6
+                    </p>
+
+                    <p>
+                        <strong>Format:</strong>
+                        eBook
+                    </p>
+
+                    <span class="borrowed">
+                        Borrowed
+                    </span>
+
+                    <br><br>
+
+                    <button>Reserve</button>
+
+                </div>
+
+                <div class="book-card">
+
+                    <h3>Quantum Dreams</h3>
+
+                    <p>Sarah Linwood</p>
+
+                    <p>
+                        <strong>ISBN:</strong>
+                        0-596-52068-9
+                    </p>
+
+                    <p>
+                        <strong>Format:</strong>
+                        Physical
+                    </p>
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                    <br><br>
+
+                    <button>Borrow</button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ADMIN LOGIN POPUP -->
+
+    <div id="admin-login" class="modal">
+
+        <div class="login-box">
+
+            <a href="#" class="close">&times;</a>
+
+            <h2>Admin Login</h2>
+
+            <form action="/admin">
+
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Red Bricks Library</p>
+    </footer>
+
+</body>
+
+</html>
