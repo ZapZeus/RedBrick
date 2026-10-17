@@ -36,7 +36,7 @@ public class MemberRepositoryImpl implements MemberRepository {
                         results.getString("first_name"),
                         results.getString("last_name"),
                         results.getString("email"),
-                        results.getString("type")); // do i change the database to the new accessLevel or leave it as type.
+                        results.getString("access_level")); // changed the database to access level because it annoyed me.
                 members.add(member);
 
             }
