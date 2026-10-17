@@ -9,46 +9,61 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="minecraft-members">
 
-    <nav class="navbar">
+    <!-- nav -->
 
-        <a href="/" class="logo">RED BRICKS LIBRARY</a>
+    <header class="minecraft-navbar">
+        <nav class="minecraft-nav-links" aria-label="Main navigation">
 
-        <div class="nav-links">
-            <a href="/catalogue">Catalogue</a>
-            <a href="/members">Members</a>
-            <a href="#admin-login">Admin</a>
-        </div>
+            <a href="/">
+                <img src="/images/home_button.png" alt="Home">
+            </a>
 
-    </nav>
+            <a href="/catalogue">
+                <img src="/images/catalogue_button.png" alt="Catalogue">
+            </a>
 
-    <main>
+            <a href="/members" aria-current="page">
+                <img src="/images/members_button.png" alt="Members">
+            </a>
 
-        <section>
+            <a href="#admin-login">
+                <img src="/images/admin_button.png" alt="Admin">
+            </a>
 
-            <h1>Members</h1>
+        </nav>
+    </header>
+
+    <!-- members -->
+
+    <main class="minecraft-content">
+
+        <section class="minecraft-panel">
+
+            <h1>Find a Member</h1>
 
             <p>
-                Find your library account to view your loans and reservations.
+                Find your library account to view your loans
+                and reservations.
             </p>
 
             <form class="search-form" id="search-form">
 
-                <input type="text"
-                       id="member-search"
-                       name="search"
-                       placeholder="Search member name">
+                <input
+                    type="text"
+                    id="member-search"
+                    name="search"
+                    placeholder="Search member name"
+                >
 
-                <button type="submit">
-                    Search
-                </button>
+                <button type="submit">Search</button>
 
             </form>
 
         </section>
 
-        <section>
+        <section class="minecraft-panel">
 
             <h2>Library Members</h2>
 
@@ -60,29 +75,32 @@
 
     </main>
 
-    <!-- ADMIN LOGIN POPUP -->
 
     <div id="admin-login" class="modal">
 
         <div class="login-box">
 
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" aria-label="Close">&times;</a>
 
             <h2>Admin Login</h2>
 
             <form action="/admin">
 
                 <label for="username">Username</label>
-                <input type="text"
-                       id="username"
-                       name="username"
-                       required>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                >
 
                 <label for="password">Password</label>
-                <input type="password"
-                       id="password"
-                       name="password"
-                       required>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                >
 
                 <button type="submit">Login</button>
 
@@ -92,16 +110,16 @@
 
     </div>
 
-    <footer>
+    <footer class="minecraft-footer">
         <p>Red Bricks Library</p>
     </footer>
 
     <script>
 
-        // Store the members retrieved from Java
+        // Store members retrieved from Java
         let allMembers = [];
 
-        // Load members from our Java API
+        // Load members from the Java API
         async function loadMembers() {
 
             const memberList = document.getElementById("member-list");
@@ -131,7 +149,6 @@
 
             const memberList = document.getElementById("member-list");
 
-            // Clear the existing list
             memberList.replaceChildren();
 
             if (members.length === 0) {
@@ -145,16 +162,17 @@
 
             members.forEach(member => {
 
-                // Creates a member row
+                // creates member row
                 const row = document.createElement("div");
                 row.className = "member-row";
 
-                //Adds member name
+                // adds member name
                 const name = document.createElement("span");
+
                 name.textContent =
                     member.firstName + " " + member.lastName;
 
-                // BUTTONS!!!
+                // adds view Account button
                 const link = document.createElement("a");
 
                 link.href =
@@ -163,17 +181,15 @@
                 link.className = "button-link";
                 link.textContent = "View Account";
 
-                // Add everything to the row
                 row.appendChild(name);
                 row.appendChild(link);
 
-                // Adds a row,
                 memberList.appendChild(row);
 
             });
         }
 
-        // Searching for members by name
+        // enables us to search members by name
         document.getElementById("search-form")
             .addEventListener("submit", function(event) {
 
@@ -186,7 +202,7 @@
                     .toLowerCase();
 
                 const filteredMembers = allMembers.filter(member => {
-                    
+
                     const fullName =
                         (member.firstName + " " + member.lastName)
                         .toLowerCase();
@@ -199,11 +215,10 @@
 
             });
 
-        // Loads in the member when opened
+        // load
         loadMembers();
 
     </script>
 
 </body>
-
 </html>

@@ -14,8 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This does all the websitey bits
- * it handles website routes and keeps website nav seperate from the api requests.
+ * This does all the websitey bits it handles website routes and keeps website
+ * nav seperate from the api requests.
+ *
  * @author m2505660
  */
 public class WebController {
@@ -70,13 +71,48 @@ public class WebController {
 
         //admin reservations
         server.createContext("/admin/reservations", exchange -> {
-            serveFile(exchange, "/views/admin-reservations.html", "text,html");
+            serveFile(exchange, "/views/admin-reservations.html", "text/html");
+        });
+
+        // admin loans
+        server.createContext("/admin/loans", exchange -> {
+            serveFile(exchange, "/views/admin-loans.html", "text/html");
         });
 
         // the annoying CSS but it works so dont look at it.
         server.createContext("/style.css", exchange -> {
             serveFile(exchange, "/views/style.css", "text/css");
         });
+
+// Minecraft backgrounds and navigation buttons, where are the images....here they are...
+        String[] images = {
+            "index.png",
+            "catalogue.png",
+            "admin.png",
+            "members.png",
+            "admin-members.png",
+            "admin-catalogue.png",
+            "admin-loans.png",
+            "admin-reservations.png",
+            "home_button.png",
+            "catalogue_button.png",
+            "members_button.png",
+            "admin_button.png",
+            "browsebooks_button.png",
+            "logout.png",
+            "loans_button.png",
+            "reservation_button.png"
+        };
+
+        for (String image : images) {
+            server.createContext("/images/" + image, exchange -> {
+                serveFile(
+                        exchange,
+                        "/views/images/" + image,
+                        "image/png"
+                );
+            });
+        }
 
     }
 

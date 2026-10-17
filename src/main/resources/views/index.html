@@ -1,49 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Bricks Library</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+<body class="minecraft-home">
 
-<body>
 
-    <nav class="navbar">
-        <a href="/index" class="logo">RED BRICKS LIBRARY</a>
+<header class="minecraft-navbar">
+    <nav class="minecraft-nav-links" aria-label="Main navigation">
 
-        <div class="nav-links">
-            <a href="/catalogue">Catalogue</a>
-            <a href="/members">Members</a>
-            <a href="#admin-login">Admin</a>
-        </div>
+        <a href="/catalogue">
+            <img src="/images/catalogue_button.png" alt="Catalogue">
+        </a>
+
+        <a href="/members">
+            <img src="/images/members_button.png" alt="Members">
+        </a>
+
+        <a href="#admin-login">
+            <img src="/images/admin_button.png" alt="Admin">
+        </a>
+
     </nav>
+</header>
 
-    <main>
 
-        <section class="hero">
-            <h1>Welcome to Red Bricks Library</h1>
-            <p>Search our collection, manage your books and discover your next read.</p>
-
-            <a href="catalogue.html" class="button-link">Browse Library</a>
-        </section>
-
+    <main class="minecraft-main">
+        <a href="/catalogue" class="browse-books">
+            <img src="/images/browsebooks_button.png" alt="Browse Books">
+        </a>
     </main>
 
-
-    <!-- ADMIN LOGIN POPUP -->
-
+    <!-- Admin Login Popup -->
     <div id="admin-login" class="modal">
-
         <div class="login-box">
-
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" aria-label="Close">&times;</a>
 
             <h2>Admin Login</h2>
 
             <form action="/admin">
-
                 <label for="username">Username</label>
                 <input type="text" id="username" required>
 
@@ -51,17 +50,9 @@
                 <input type="password" id="password" required>
 
                 <button type="submit">Login</button>
-
             </form>
-
         </div>
-
     </div>
 
-    <footer>
-        <p>Red Bricks Library</p>
-    </footer>
-
 </body>
-
 </html>

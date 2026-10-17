@@ -1,4 +1,5 @@
-/*  GENERAL */
+
+/* lets get this show on the road*/
 
 * {
     box-sizing: border-box;
@@ -11,17 +12,14 @@ body {
     color: #222;
 }
 
-
-/*  NAVIGATION */
+/* navbar*/
 
 .navbar {
     height: 65px;
     background: #8b1e1e;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 40px;
 }
 
@@ -47,8 +45,7 @@ body {
     text-decoration: underline;
 }
 
-
-/*  MAIN */
+/* main and section*/
 
 main {
     max-width: 1100px;
@@ -63,14 +60,11 @@ section {
     border-radius: 8px;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     margin-top: 0;
 }
 
-
-/*  HOME PAGE */
+/* hero */
 
 .hero {
     text-align: center;
@@ -88,23 +82,17 @@ h3 {
     margin-bottom: 30px;
 }
 
-
-/* BUTTONS */
+/* buttons */
 
 button,
 .button-link {
     background: #8b1e1e;
     color: white;
-
     border: none;
     border-radius: 5px;
-
     padding: 11px 20px;
-
     cursor: pointer;
-
     font-size: 15px;
-
     text-decoration: none;
 }
 
@@ -113,16 +101,13 @@ button:hover,
     background: #681616;
 }
 
-
-/* FORMS */
+/* form stuff and things */
 
 input,
 select {
     padding: 11px;
-
     border: 1px solid #ccc;
     border-radius: 5px;
-
     font-size: 15px;
 }
 
@@ -137,10 +122,8 @@ select {
 
 .admin-form {
     max-width: 500px;
-
     display: flex;
     flex-direction: column;
-
     gap: 10px;
 }
 
@@ -148,22 +131,17 @@ select {
     margin-top: 10px;
 }
 
-
-/* BOOK CARDS */
+/* book cards and style */
 
 .book-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
 .book-card {
     border: 1px solid #ddd;
     border-radius: 6px;
-
     padding: 20px;
 }
 
@@ -181,8 +159,7 @@ select {
     font-weight: bold;
 }
 
-
-/*  ADMIN */
+/* admin */
 
 .admin-options {
     display: flex;
@@ -190,20 +167,15 @@ select {
     flex-wrap: wrap;
 }
 
-
-/*  LOGIN POPUP */
+/*login popup, now im getting fancy */
 
 .modal {
     display: none;
-
     position: fixed;
     inset: 0;
-
     background: rgba(0, 0, 0, 0.6);
-
     align-items: center;
     justify-content: center;
-
     z-index: 1000;
 }
 
@@ -213,20 +185,16 @@ select {
 
 .login-box {
     background: white;
-
     width: 350px;
-
+    max-width: 90vw;
     padding: 30px;
-
     border-radius: 8px;
-
     position: relative;
 }
 
 .login-box form {
     display: flex;
     flex-direction: column;
-
     gap: 10px;
 }
 
@@ -240,29 +208,22 @@ select {
 
 .close {
     position: absolute;
-
     top: 10px;
     right: 15px;
-
     color: #333;
-
     font-size: 25px;
-
     text-decoration: none;
 }
 
-
-/*  FOOTER */
+/* footer */
 
 footer {
     text-align: center;
-
     padding: 25px;
-
     color: #777;
 }
 
-/* ADMIN DASHBOARD */
+/* dashboard for the admin*/
 
 .admin-dashboard {
     display: grid;
@@ -280,8 +241,7 @@ footer {
     margin-bottom: 25px;
 }
 
-
-/* MEMBER AND ADMIN LISTS */
+/* member list */
 
 .member-list {
     display: flex;
@@ -293,10 +253,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     border: 1px solid #ddd;
     border-radius: 6px;
-
     padding: 15px 20px;
 }
 
@@ -305,33 +263,29 @@ footer {
     color: #666;
 }
 
-
-/* SECTION HEADINGS */
+/* headings */
 
 .section-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
 .section-heading h2 {
     margin: 0;
+    font-size: 23px;
 }
 
-
-/* ACTION BUTTONS */
+/* button action */
 
 .actions {
     display: flex;
     gap: 10px;
 }
 
-
-/* ====================================
-   MEMBER ACCOUNT PAGE
-   ==================================== */
+/* account page for individual members */
 
 .member-account {
     max-width: 1050px;
@@ -351,7 +305,7 @@ footer {
     text-decoration: underline;
 }
 
-/* Member profile */
+/* the members profiles */
 
 .account-header {
     display: flex;
@@ -359,7 +313,7 @@ footer {
     gap: 25px;
     padding: 30px;
     margin-bottom: 25px;
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 12px;
 }
@@ -394,7 +348,7 @@ footer {
     color: #777;
 }
 
-/* Account statistics */
+/* stat cards */
 
 .account-stats {
     display: grid;
@@ -421,22 +375,10 @@ footer {
     margin: 0;
 }
 
-/* Loans and reservations */
+/* loans and resevations */
 
 .account-section {
     margin-bottom: 35px;
-}
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.section-heading h2 {
-    font-size: 23px;
 }
 
 .account-list {
@@ -489,43 +431,260 @@ footer {
     font-size: 13px;
 }
 
-/* Mobile layout */
+/* minecraft theme, wooden nav bar added to background to save addition headaches. shhh.
+these are shared among all pages.*/
 
-@media (max-width: 600px) {
-    .account-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .account-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .account-item {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+body.minecraft-home,
+body.minecraft-catalogue,
+body.minecraft-members,
+body.minecraft-member,
+body.minecraft-admin,
+body.minecraft-admin-catalogue,
+body.minecraft-admin-members,
+body.minecraft-admin-loans,
+body.minecraft-admin-reservations,
+body.minecraft-loans {
+    min-height: 100vh;
+    background-color: #241b16;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-/* SMALL SCREEN SUPPORT BECAUSE WHY NOT! */
+body.minecraft-home { background-image: url('/images/index.png'); }
+body.minecraft-catalogue { background-image: url('/images/catalogue.png'); }
+body.minecraft-members,
+body.minecraft-member { background-image: url('/images/members.png'); }
+body.minecraft-admin { background-image: url('/images/admin.png'); }
+body.minecraft-admin-catalogue { background-image: url('/images/admin-catalogue.png'); }
+body.minecraft-admin-members { background-image: url('/images/admin-members.png'); }
+body.minecraft-admin-loans,
+body.minecraft-loans { background-image: url('/images/admin-loans.png'); }
+body.minecraft-admin-reservations { background-image: url('/images/admin-reservations.png'); }
 
+/* nav images */
+.minecraft-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+}
+.minecraft-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1.8vw, 30px);
+    max-width: 100%;
+}
+.minecraft-nav-links a {
+    display: block;
+    width: clamp(100px, 14.5vw, 260px);
+    flex: 0 1 auto;
+    transition: transform .15s ease, filter .15s ease;
+}
+.minecraft-nav-links img { display: block; width: 100%; max-width: 100%; height: auto; }
+.minecraft-nav-links a:hover,
+.minecraft-nav-links a:focus-visible {
+    transform: translateY(-3px) scale(1.04);
+    filter: brightness(1.12);
+}
+.minecraft-nav-links a.logout-button { width: clamp(100px, 12vw, 205px); }
+
+/* admin navigation, dont touch it. it seems to go MASSIVE if you touch it. */
+/* Image links only - keeps all six buttons inside the wooden beam. */
+.admin-navbar { padding: 0 20px; }
+.admin-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 1450px;
+}
+.admin-nav-links > a {
+    display: block;
+    flex: 0 1 190px;
+    min-width: 0;
+    text-decoration: none;
+    transition: transform .15s ease, filter .15s ease;
+}
+.admin-nav-links > a img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.admin-nav-links > a:hover,
+.admin-nav-links > a:focus-visible {
+    transform: translateY(-3px) scale(1.04);
+    filter: brightness(1.12);
+}
+.admin-nav-links > a.logout-button {
+    flex: 0 1 160px;
+    width: auto;
+}
+
+/* home layout */
+main.minecraft-main {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+.browse-books {
+    position: absolute;
+    left: 50%;
+    top: 72%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 280px;
+    max-width: 65vw;
+    transition: filter .2s ease;
+}
+.browse-books img { display: block; width: 100%; height: auto; }
+.browse-books:hover { filter: brightness(1.2); }
+
+/* layout but not for home */
+body[class*='minecraft-']:not(.minecraft-home) > main:not(.minecraft-main) {
+    max-width: 1100px;
+    margin: 140px auto 45px;
+    padding: 0 20px;
+}
+.minecraft-content { position: relative; min-height: 100vh; }
+
+/* shared cream colour but not for home */
+body[class*='minecraft-']:not(.minecraft-home) main section,
+body[class*='minecraft-']:not(.minecraft-home) main .admin-card,
+body[class*='minecraft-']:not(.minecraft-home) main .book-card,
+body[class*='minecraft-']:not(.minecraft-home) main .account-header,
+body[class*='minecraft-']:not(.minecraft-home) main .stat-card,
+body[class*='minecraft-']:not(.minecraft-home) main .account-item,
+body[class*='minecraft-']:not(.minecraft-home) main .member-row {
+    background: rgba(255, 248, 230, .95);
+    border: 3px solid #7d512d;
+    border-radius: 5px;
+    box-shadow: 5px 6px 0 rgba(25, 14, 7, .65);
+    color: #3b2415;
+}
+body[class*='minecraft-']:not(.minecraft-home) main .minecraft-panel {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+body[class*='minecraft-']:not(.minecraft-home) main .minecraft-panel h1,
+body[class*='minecraft-']:not(.minecraft-home) main .minecraft-panel h2,
+body[class*='minecraft-']:not(.minecraft-home) main .minecraft-panel h3,
+body[class*='minecraft-']:not(.minecraft-home) main .member-row strong,
+body[class*='minecraft-']:not(.minecraft-home) main .book-card h3 {
+    color: #5b351e;
+}
+body[class*='minecraft-']:not(.minecraft-home) main .minecraft-panel p { color: #4b3525; }
+body[class*='minecraft-']:not(.minecraft-home) main .member-row p { color: #66513c; }
+body[class*='minecraft-']:not(.minecraft-home) main .member-row span { color: #3b2415; }
+body[class*='minecraft-']:not(.minecraft-home) main .member-row {
+    border-width: 2px;
+    gap: 20px;
+}
+body[class*='minecraft-']:not(.minecraft-home) main .member-row strong,
+body.minecraft-members main .member-row span { font-size: 17px; font-weight: bold; }
+body.minecraft-members main .member-row:hover { background: #f5e5c6; }
+
+/* buttons and search bar, yes we have a search bar. */
+body[class*='minecraft-'] .button-link,
+body[class*='minecraft-'] button {
+    background: #8b3025;
+    color: #fff5df;
+    border: 2px solid #cf7651;
+    border-radius: 2px;
+    font-weight: bold;
+}
+body[class*='minecraft-'] .button-link:hover,
+body[class*='minecraft-'] button:hover { background: #ad4030; }
+body[class*='minecraft-'] .search-form input {
+    min-width: 0;
+    background: #fff7e6;
+    border: 2px solid #a47b4c;
+}
+.actions { flex-wrap: wrap; }
+.book-actions { margin-top: 20px; }
+body.minecraft-catalogue .available { color: #217a37; }
+body.minecraft-catalogue .borrowed { color: #b42318; }
+
+/* admin dashboard */
+body.minecraft-admin .admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+}
+body.minecraft-admin .admin-card p { flex-grow: 1; }
+body.minecraft-admin .admin-card .button-link { display: inline-block; margin-top: 10px; }
+
+/* member account */
+body.minecraft-member .account-section { padding: 25px; margin-bottom: 25px; }
+body.minecraft-member .account-section h2 { color: #5b351e; }
+body.minecraft-member .account-section p { color: #4b3525; }
+body.minecraft-member .back-link { color: #fff3d6; text-shadow: 2px 2px 3px #000; }
+body.minecraft-member .account-label { color: #8b3025; }
+
+/* login box*/
+body[class*='minecraft-'] .login-box {
+    background: #30251c;
+    color: #fff3d7;
+    border: 4px solid #90633c;
+    border-radius: 4px;
+    box-shadow: 8px 8px 0 #130e0a;
+}
+body[class*='minecraft-'] .login-box h2 { text-align: center; }
+body[class*='minecraft-'] .login-box .close { color: #fff3d7; }
+body[class*='minecraft-'] footer { color: #fff0d0; text-shadow: 2px 2px 3px #000; }
+
+/* For repsonsive design look here, maybe ill add a burger, maybe not. */
+@media (max-width: 850px) {
+    .admin-navbar { height: auto; min-height: 110px; padding: 12px; }
+    .admin-nav-links { flex-wrap: wrap; gap: 8px; }
+    .admin-nav-links > a { flex: 0 1 150px; }
+    .admin-nav-links > a.logout-button { flex: 0 1 125px; }
+    body[class*='minecraft-admin'] .minecraft-content { margin-top: 180px; }
+}
 @media (max-width: 750px) {
-
-    .admin-dashboard {
-        grid-template-columns: 1fr;
+    .admin-dashboard { grid-template-columns: 1fr; }
+    .navbar { padding: 0 20px; }
+    .nav-links { gap: 12px; }
+}
+@media (max-width: 650px) {
+    .minecraft-navbar:not(.admin-navbar) { height: 75px; padding: 0 5px; }
+    .minecraft-nav-links { gap: 5px; width: 100%; }
+    .minecraft-nav-links a { width: 23%; min-width: 0; }
+    .minecraft-nav-links a.logout-button { width: 20%; }
+    .browse-books { width: 220px; top: 70%; }
+    body[class*='minecraft-']:not(.minecraft-home) > main:not(.minecraft-main) {
+        margin-top: 100px;
+        padding: 0 12px;
     }
-
-    .navbar {
-        padding: 0 20px;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-
+    body[class*='minecraft-admin'] .minecraft-content { margin-top: 180px; }
+    .search-form { flex-direction: column; }
+    .member-row { flex-direction: column; align-items: flex-start; }
+    .book-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+    .account-header { flex-direction: column; text-align: center; }
+    .account-stats { grid-template-columns: 1fr; }
+    .account-item { align-items: flex-start; flex-direction: column; }
+    .section-heading { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 500px) {
+    .admin-nav-links > a { flex: 0 1 30%; }
+    .admin-nav-links > a.logout-button { flex: 0 1 30%; }
+    body[class*='minecraft-admin'] .minecraft-content { margin-top: 210px; }
 }

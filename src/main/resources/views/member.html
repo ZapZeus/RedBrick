@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +9,33 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="minecraft-member">
 
-    <header>
-        <nav class="navbar">
-            <a href="/" class="logo">Red Bricks Library</a>
+    <!-- nav, minecraft style -->
 
-            <div class="nav-links">
-                <a href="/catalogue">Catalogue</a>
-                <a href="/members">Members</a>
-            </div>
+    <header class="minecraft-navbar">
+        <nav class="minecraft-nav-links" aria-label="Main navigation">
+
+            <a href="/">
+                <img src="/images/home_button.png" alt="Home">
+            </a>
+
+            <a href="/catalogue">
+                <img src="/images/catalogue_button.png" alt="Catalogue">
+            </a>
+
+            <a href="/members">
+                <img src="/images/members_button.png" alt="Members">
+            </a>
+
+            <a href="#admin-login">
+                <img src="/images/admin_button.png" alt="Admin">
+            </a>
+
         </nav>
     </header>
+
+    <!-- members only. -->
 
     <main class="member-account">
 
@@ -27,7 +43,8 @@
             &larr; Back to Members
         </a>
 
-        <!-- Member profile -->
+        <!-- their profile, maybe add a display picture for each, maybe not. -->
+
         <section class="account-header">
 
             <div class="member-avatar" id="member-avatar">--</div>
@@ -40,8 +57,9 @@
 
         </section>
 
-        <!-- Account statistics -->
-        <section class="account-stats">
+        <!-- members stats. -->
+
+        <div class="account-stats">
 
             <div class="stat-card">
                 <p>Books on Loan</p>
@@ -53,9 +71,10 @@
                 <h2 id="reservation-count">0</h2>
             </div>
 
-        </section>
+        </div>
 
-        <!-- Borrowed books -->
+        <!-- borrowed books -->
+
         <section class="account-section">
 
             <div class="section-heading">
@@ -72,7 +91,8 @@
 
         </section>
 
-        <!-- Reservations -->
+        <!-- reserved books -->
+
         <section class="account-section">
 
             <div class="section-heading">
@@ -87,14 +107,51 @@
 
     </main>
 
-    <footer class="account-footer">
+    <!-- admin login -->
+
+    <div id="admin-login" class="modal">
+
+        <div class="login-box">
+
+            <a href="#" class="close" aria-label="Close">&times;</a>
+
+            <h2>Admin Login</h2>
+
+            <form action="/admin">
+
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                >
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer class="account-footer minecraft-footer">
         <p>&copy; 2026 Red Bricks Library</p>
     </footer>
 
     <script>
+
         async function loadMember() {
 
-            // Read member ID from URL: /member?id=2
+            // reads member ID from URL: /member?id=2
             const params = new URLSearchParams(window.location.search);
             const memberId = Number(params.get("id"));
 
@@ -102,7 +159,7 @@
             const idElement = document.getElementById("member-id");
             const avatarElement = document.getElementById("member-avatar");
 
-            // Validate the member ID
+            // validates the member ID
             if (!Number.isSafeInteger(memberId) || memberId <= 0) {
                 nameElement.textContent = "Invalid member ID";
                 return;
@@ -110,19 +167,19 @@
 
             try {
 
-                // Request member data from Java ApiController
+                // request member data from ApiController
                 const response = await fetch("/api/members");
 
                 if (!response.ok) {
                     throw new Error("Unable to retrieve members");
                 }
 
-                // Convert JSON response into JavaScript objects
+                // convert JSON response into JavaScript objects
                 const members = await response.json();
 
-                // Find the member matching the URL ID
+                // finds the member matching the URL ID
                 const member = members.find(
-                    m => m.id === memberId
+                    m => Number(m.id) === memberId
                 );
 
                 if (!member) {
@@ -130,19 +187,19 @@
                     return;
                 }
 
-                // Display the member's name
+                // shows the members name
                 nameElement.textContent =
                     member.firstName + " " + member.lastName;
 
-                // Display member ID
+                // displays there membership number
                 idElement.textContent = "Member #" + member.id;
 
-                // Display initials inside avatar
+                // uses the first char of there name as a avatar
                 avatarElement.textContent =
                     member.firstName.charAt(0).toUpperCase() +
                     member.lastName.charAt(0).toUpperCase();
 
-                // Update browser tab title
+                // update
                 document.title =
                     member.firstName + " " + member.lastName +
                     " | Red Bricks Library";
@@ -157,10 +214,10 @@
             }
         }
 
-        // Run when the page loads
+        // runs when the page loads
         loadMember();
+
     </script>
 
 </body>
-
 </html>

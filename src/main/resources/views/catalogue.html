@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,50 +9,70 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="minecraft-catalogue">
 
-    <nav class="navbar">
+    <!-- nav -->
 
-        <a href="/index" class="logo">RED BRICKS LIBRARY</a>
+    <header class="minecraft-navbar">
+        <nav class="minecraft-nav-links" aria-label="Main navigation">
 
-        <div class="nav-links">
-            <a href="/catalogue">Catalogue</a>
-            <a href="/members">Members</a>
-            <a href="#admin-login">Admin</a>
-        </div>
+            <a href="/">
+                <img src="/images/home_button.png" alt="Home">
+            </a>
 
-    </nav>
+            <a href="/catalogue" aria-current="page">
+                <img src="/images/catalogue_button.png" alt="Catalogue">
+            </a>
 
-    <main>
+            <a href="/members">
+                <img src="/images/members_button.png" alt="Members">
+            </a>
 
-        <section>
+            <a href="#admin-login">
+                <img src="/images/admin_button.png" alt="Admin">
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main class="minecraft-content">
+
+        <!-- search bar -->
+
+        <section class="minecraft-panel">
 
             <h1>Library Catalogue</h1>
 
             <p>
-                Search the Red Bricks Library collection by title,
-                author or ISBN.
+                Search the Red Bricks Library collection
+                by title, author or ISBN.
             </p>
 
-            <form class="search-form">
+            <form class="search-form" id="catalogue-search">
 
-                <input type="text"
-                       name="search"
-                       placeholder="Title, author or ISBN">
+                <input
+                    type="text"
+                    id="book-search"
+                    name="search"
+                    placeholder="Title, author or ISBN"
+                >
 
-                <button type="submit">
-                    Search
-                </button>
+                <button type="submit">Search</button>
 
             </form>
 
         </section>
 
-        <section>
+        <!-- books are here, this is a placeholder for now. -->
+
+        <section class="minecraft-panel">
 
             <h2>Library Collection</h2>
 
-            <div class="book-grid">
+            <div class="book-grid" id="book-grid">
+
+                <!-- book 1 -->
 
                 <div class="book-card">
 
@@ -69,15 +90,15 @@
                         Physical
                     </p>
 
-                    <span class="available">
-                        Available
-                    </span>
+                    <span class="available">Available</span>
 
-                    <br><br>
-
-                    <button>Borrow</button>
+                    <div class="book-actions">
+                        <button type="button">Borrow</button>
+                    </div>
 
                 </div>
+
+                <!-- book 2 -->
 
                 <div class="book-card">
 
@@ -95,15 +116,15 @@
                         eBook
                     </p>
 
-                    <span class="borrowed">
-                        Borrowed
-                    </span>
+                    <span class="borrowed">Borrowed</span>
 
-                    <br><br>
-
-                    <button>Reserve</button>
+                    <div class="book-actions">
+                        <button type="button">Reserve</button>
+                    </div>
 
                 </div>
+
+                <!-- book 3 -->
 
                 <div class="book-card">
 
@@ -121,13 +142,11 @@
                         Physical
                     </p>
 
-                    <span class="available">
-                        Available
-                    </span>
+                    <span class="available">Available</span>
 
-                    <br><br>
-
-                    <button>Borrow</button>
+                    <div class="book-actions">
+                        <button type="button">Borrow</button>
+                    </div>
 
                 </div>
 
@@ -137,23 +156,33 @@
 
     </main>
 
-    <!-- ADMIN LOGIN POPUP -->
+    <!-- admin popup -->
 
     <div id="admin-login" class="modal">
 
         <div class="login-box">
 
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" aria-label="Close">&times;</a>
 
             <h2>Admin Login</h2>
 
             <form action="/admin">
 
                 <label for="username">Username</label>
-                <input type="text" id="username" required>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                >
 
                 <label for="password">Password</label>
-                <input type="password" id="password" required>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                >
 
                 <button type="submit">Login</button>
 
@@ -163,10 +192,9 @@
 
     </div>
 
-    <footer>
+    <footer class="minecraft-footer">
         <p>Red Bricks Library</p>
     </footer>
 
 </body>
-
 </html>

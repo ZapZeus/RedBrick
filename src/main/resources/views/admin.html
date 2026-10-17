@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,26 +9,45 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="minecraft-admin">
 
-    <nav class="navbar">
+    <!-- nav -->
 
-        <a href="/index" class="logo">RED BRICKS LIBRARY</a>
+<header class="minecraft-navbar admin-navbar">
+    <nav class="admin-nav-links" aria-label="Admin navigation">
 
-        <div class="nav-links">
-            <a href="/admin">Dashboard</a>
-            <a href="/admin/catalogue">Catalogue</a>
-            <a href="/admin/members">Members</a>
-            <a href="/admin/loans">Loans</a>
-            <a href="/admin/reservations">Reservations</a>
-            <a href="/index">Exit Admin</a>
-        </div>
+        <a href="/admin" aria-current="page">
+            <img src="/images/admin_button.png" alt="Dashboard">
+        </a>
+
+        <a href="/admin/catalogue">
+            <img src="/images/catalogue_button.png" alt="Catalogue">
+        </a>
+
+        <a href="/admin/members">
+            <img src="/images/members_button.png" alt="Members">
+        </a>
+
+        <a href="/admin/loans">
+            <img src="/images/loans_button.png" alt="Loans">
+        </a>
+
+        <a href="/admin/reservations">
+            <img src="/images/reservation_button.png" alt="Reservations">
+        </a>
+
+        <a href="/" class="logout-button">
+            <img src="/images/logout.png" alt="Exit Admin">
+        </a>
 
     </nav>
+</header>
 
-    <main>
+    <!-- dashboard -->
 
-        <section>
+    <main class="minecraft-content">
+
+        <section class="minecraft-panel">
 
             <h1>Admin Dashboard</h1>
 
@@ -37,61 +57,69 @@
 
         </section>
 
-        <section class="admin-dashboard">
+        <section class="minecraft-panel">
 
-            <div class="admin-card">
+            <div class="admin-dashboard">
 
-                <h2>Catalogue</h2>
 
-                <p>
-                    Add, edit and remove library inventory.
-                </p>
+                <div class="admin-card">
 
-                <a href="/admin/catalogue" class="button-link">
-                    Manage Catalogue
-                </a>
+                    <h2>Catalogue</h2>
 
-            </div>
+                    <p>
+                        Add, edit and remove library inventory.
+                    </p>
 
-            <div class="admin-card">
+                    <a href="/admin/catalogue" class="button-link">
+                        Manage Catalogue
+                    </a>
 
-                <h2>Members</h2>
+                </div>
 
-                <p>
-                    Add, edit and remove library members.
-                </p>
 
-                <a href="/admin/members" class="button-link">
-                    Manage Members
-                </a>
+                <div class="admin-card">
 
-            </div>
+                    <h2>Members</h2>
 
-            <div class="admin-card">
+                    <p>
+                        Add, edit and remove library members.
+                    </p>
 
-                <h2>Loans</h2>
+                    <a href="/admin/members" class="button-link">
+                        Manage Members
+                    </a>
 
-                <p>
-                    View borrowed items and process returns.
-                </p>
+                </div>
 
-                <a href="/admin/loans" class="button-link">
-                    Manage Loans
-                </a>
 
-            </div>
+                <div class="admin-card">
 
-            <div class="admin-card">
+                    <h2>Loans</h2>
 
-                <h2>Reservations</h2>
+                    <p>
+                        View borrowed items and process returns.
+                    </p>
 
-                <p>
-                    View and manage item reservations.
-                </p>
+                    <a href="/admin/loans" class="button-link">
+                        Manage Loans
+                    </a>
 
-                <a href="/admin/reservations" class="button-link">
-                    Manage Reservations
-                </a>
+                </div>
+
+
+                <div class="admin-card">
+
+                    <h2>Reservations</h2>
+
+                    <p>
+                        View and manage item reservations.
+                    </p>
+
+                    <a href="/admin/reservations" class="button-link">
+                        Manage Reservations
+                    </a>
+
+                </div>
 
             </div>
 
@@ -99,10 +127,9 @@
 
     </main>
 
-    <footer>
+    <footer class="minecraft-footer">
         <p>Red Bricks Library Administration</p>
     </footer>
 
 </body>
-
 </html>

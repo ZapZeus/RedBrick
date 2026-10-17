@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,26 +9,46 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="minecraft-admin-catalogue">
 
-    <nav class="navbar">
+    <!-- admin navv -->
 
-        <a href="/index" class="logo">RED BRICKS LIBRARY</a>
+<header class="minecraft-navbar admin-navbar">
+    <nav class="admin-nav-links" aria-label="Admin navigation">
 
-        <div class="nav-links">
-            <a href="/admin">Dashboard</a>
-            <a href="/admin/catalogue">Catalogue</a>
-            <a href="/admin/members">Members</a>
-            <a href="/admin/loans">Loans</a>
-            <a href="/admin/reservations">Reservations</a>
-            <a href="/index">Exit Admin</a>
-        </div>
+        <a href="/admin">
+            <img src="/images/admin_button.png" alt="Dashboard">
+        </a>
+
+        <a href="/admin/catalogue">
+            <img src="/images/catalogue_button.png" alt="Catalogue">
+        </a>
+
+        <a href="/admin/members">
+            <img src="/images/members_button.png" alt="Members">
+        </a>
+
+        <a href="/admin/loans">
+            <img src="/images/loans_button.png" alt="Loans">
+        </a>
+
+        <a href="/admin/reservations">
+            <img src="/images/reservation_button.png" alt="Reservations">
+        </a>
+
+        <a href="/" class="logout-button">
+            <img src="/images/logout.png" alt="Logout">
+        </a>
 
     </nav>
+</header>
 
-    <main>
 
-        <section>
+    <main class="minecraft-content">
+
+        <!-- search bar -->
+
+        <section class="minecraft-panel">
 
             <h1>Catalogue Management</h1>
 
@@ -37,9 +58,11 @@
 
             <form class="search-form">
 
-                <input type="text"
-                       name="search"
-                       placeholder="Title, author or ISBN">
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Title, author or ISBN"
+                >
 
                 <button type="submit">
                     Search
@@ -49,19 +72,23 @@
 
         </section>
 
-        <section>
+        <!-- inventory-->
+
+        <section class="minecraft-panel">
 
             <div class="section-heading">
 
                 <h2>Inventory</h2>
 
-                <button>
+                <button type="button">
                     Add Item
                 </button>
 
             </div>
 
             <div class="member-list">
+
+                <!-- book 1 -->
 
                 <div class="member-row">
 
@@ -71,11 +98,13 @@
                     </div>
 
                     <div class="actions">
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
                     </div>
 
                 </div>
+
+                <!-- book 2 -->
 
                 <div class="member-row">
 
@@ -85,11 +114,13 @@
                     </div>
 
                     <div class="actions">
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
                     </div>
 
                 </div>
+
+                <!-- book 3 -->
 
                 <div class="member-row">
 
@@ -99,8 +130,8 @@
                     </div>
 
                     <div class="actions">
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
                     </div>
 
                 </div>
@@ -111,10 +142,9 @@
 
     </main>
 
-    <footer>
+    <footer class="minecraft-footer">
         <p>Red Bricks Library Administration</p>
     </footer>
 
 </body>
-
 </html>
