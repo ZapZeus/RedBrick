@@ -5,8 +5,8 @@
 package com.mycompany.controller;
 
 import Util.JsonHandlerUtil;
-import com.mycompany.model.entity.repository.MemberRepository;
-import com.mycompany.model.entity.repository.MemberRepositoryImpl;
+import com.mycompany.repository.MemberRepository;
+import com.mycompany.repository.MemberRepositoryImpl;
 import com.mycompany.services.MemberService;
 import com.sun.net.httpserver.HttpServer;
 import java.sql.SQLException;

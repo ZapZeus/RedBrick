@@ -5,8 +5,8 @@
 package com.mycompany.services;
 
 import com.mycompany.dto.MemberDto;
-import com.mycompany.model.entity.MemberEntity;
-import com.mycompany.model.entity.repository.MemberRepository;
+import com.mycompany.entity.MemberEntity;
+import com.mycompany.repository.MemberRepository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

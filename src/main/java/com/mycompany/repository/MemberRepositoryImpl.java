@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.model.entity.repository;
+package com.mycompany.repository;
 
-import com.mycompany.model.entity.MemberEntity;
+import com.mycompany.enums.AccessLevelEnum;
+import com.mycompany.entity.MemberEntity;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class MemberRepositoryImpl implements MemberRepository {
                         results.getString("first_name"),
                         results.getString("last_name"),
                         results.getString("email"),
-                        results.getString("access_level")); // changed the database to access level because it annoyed me.
+                        AccessLevelEnum.valueOf(results.getString("access_level"))); // changed the database to access level because it annoyed me.
                 members.add(member);
 
             }

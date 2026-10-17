@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.model.entity;
+package com.mycompany.entity;
+
+import com.mycompany.enums.AccessLevelEnum;
 
 /**
  * What defines a member
@@ -15,9 +17,9 @@ public class MemberEntity {
     private String firstName;
     private String lastName;
     private String email;
-    private String accessLevel;
+    private AccessLevelEnum accessLevel;
 
-    public MemberEntity(int id, String firstName, String lastName, String email, String accessLevel) {
+    public MemberEntity(int id, String firstName, String lastName, String email, AccessLevelEnum accessLevel) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,8 +43,9 @@ public class MemberEntity {
         return email;
     }
 
-    public String getAccessLevel() {
+    public AccessLevelEnum getAccessLevel() {
         return accessLevel;
     }
+
 
 }
