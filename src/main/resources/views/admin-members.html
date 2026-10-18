@@ -13,36 +13,35 @@
 
     <!-- nav -->
 
-<header class="minecraft-navbar admin-navbar">
-    <nav class="admin-nav-links" aria-label="Admin navigation">
+    <header class="minecraft-navbar admin-navbar">
+        <nav class="admin-nav-links" aria-label="Admin navigation">
 
-        <a href="/admin">
-            <img src="/images/admin_button.png" alt="Dashboard">
-        </a>
+            <a href="/admin">
+                <img src="/images/admin_button.png" alt="Dashboard">
+            </a>
 
-        <a href="/admin/catalogue">
-            <img src="/images/catalogue_button.png" alt="Catalogue">
-        </a>
+            <a href="/admin/catalogue">
+                <img src="/images/catalogue_button.png" alt="Catalogue">
+            </a>
 
-        <a href="/admin/members">
-            <img src="/images/members_button.png" alt="Members">
-        </a>
+            <a href="/admin/members" aria-current="page">
+                <img src="/images/members_button.png" alt="Members">
+            </a>
 
-        <a href="/admin/loans">
-            <img src="/images/loans_button.png" alt="Loans">
-        </a>
+            <a href="/admin/loans">
+                <img src="/images/loans_button.png" alt="Loans">
+            </a>
 
-        <a href="/admin/reservations">
-            <img src="/images/reservation_button.png" alt="Reservations">
-        </a>
+            <a href="/admin/reservations">
+                <img src="/images/reservation_button.png" alt="Reservations">
+            </a>
 
-        <a href="/" class="logout-button">
-            <img src="/images/logout.png" alt="Logout">
-        </a>
+            <a href="/" class="logout-button">
+                <img src="/images/logout.png" alt="Logout">
+            </a>
 
-    </nav>
-</header>
-
+        </nav>
+    </header>
 
     <main class="minecraft-content">
 
@@ -56,10 +55,11 @@
                 Search, add, edit or remove library members.
             </p>
 
-            <form class="search-form">
+            <form class="search-form" id="search-form">
 
                 <input
                     type="text"
+                    id="member-search"
                     name="search"
                     placeholder="Search members"
                 >
@@ -84,53 +84,9 @@
 
             </div>
 
-            <div class="member-list">
+            <div class="member-list" id="member-list">
 
-                <!-- temp bit here -->
-
-                <div class="member-row">
-
-                    <div>
-                        <strong>Tony Stark</strong>
-                        <p>tony.stark@avengers.com</p>
-                    </div>
-
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button type="button">Delete</button>
-                    </div>
-
-                </div>
-
-
-                <div class="member-row">
-
-                    <div>
-                        <strong>Peter Parker</strong>
-                        <p>peter.parker@avengers.com</p>
-                    </div>
-
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button type="button">Delete</button>
-                    </div>
-
-                </div>
-
-
-                <div class="member-row">
-
-                    <div>
-                        <strong>Steve Rogers</strong>
-                        <p>steve.rogers@avengers.com</p>
-                    </div>
-
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button type="button">Delete</button>
-                    </div>
-
-                </div>
+                <p>Loading members...</p>
 
             </div>
 
@@ -141,6 +97,123 @@
     <footer class="minecraft-footer">
         <p>Red Bricks Library Administration</p>
     </footer>
+
+    <script>
+
+        // Store members retrieved from Java
+        let allMembers = [];
+
+        // Load all accounts from the admin API
+        async function loadMembers() {
+
+            const memberList = document.getElementById("member-list");
+
+            try {
+
+                const response = await fetch("/api/admin/members");
+
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve members");
+                }
+
+                allMembers = await response.json();
+
+                displayMembers(allMembers);
+
+            } catch (error) {
+
+                memberList.textContent = "Unable to load members.";
+
+                console.error("Member loading error:", error);
+            }
+        }
+
+        // Display members on the webpage
+        function displayMembers(members) {
+
+            const memberList = document.getElementById("member-list");
+
+            memberList.replaceChildren();
+
+            if (members.length === 0) {
+
+                const message = document.createElement("p");
+                message.textContent = "No members found.";
+
+                memberList.appendChild(message);
+                return;
+            }
+
+            members.forEach(member => {
+
+                // Create member row
+                const row = document.createElement("div");
+                row.className = "member-row";
+
+                // Member information
+                const info = document.createElement("div");
+
+                const name = document.createElement("strong");
+
+                name.textContent =
+                    member.firstName + " " + member.lastName;
+
+                info.appendChild(name);
+
+                // Action buttons
+                const actions = document.createElement("div");
+                actions.className = "actions";
+
+                const editButton = document.createElement("button");
+                editButton.type = "button";
+                editButton.textContent = "Edit";
+
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.textContent = "Delete";
+
+                actions.appendChild(editButton);
+                actions.appendChild(deleteButton);
+
+                // Add everything to the page
+                row.appendChild(info);
+                row.appendChild(actions);
+
+                memberList.appendChild(row);
+
+            });
+        }
+
+        // Search members by name
+        document.getElementById("search-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const search = document
+                    .getElementById("member-search")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+                const filteredMembers = allMembers.filter(member => {
+
+                    const fullName =
+                        (member.firstName + " " + member.lastName)
+                        .toLowerCase();
+
+                    return fullName.includes(search);
+
+                });
+
+                displayMembers(filteredMembers);
+
+            });
+
+        // Load members when the page opens
+        loadMembers();
+
+    </script>
 
 </body>
 </html>

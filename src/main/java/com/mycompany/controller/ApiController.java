@@ -49,5 +49,20 @@ public class ApiController {
                 );
             }
         });
+        
+        server.createContext("/api/admin/members", exchange -> {
+            try{
+                if(!exchange.getRequestMethod().equals("GET")){
+                    exchange.getResponseHeaders().set("Allow", "GET");
+                    
+                    JsonHandlerUtil.sendJson(exchange, 405, "Method not allowed");
+                    return;
+                }
+                JsonHandlerUtil.sendJson(exchange, 200, memberService.getAllMemberDtos());
+            }
+            catch (SQLException e){
+                JsonHandlerUtil.sendJson(exchange, 500, "Unable to retrieve accounts");
+            }
+        });
     }
 }

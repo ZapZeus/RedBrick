@@ -597,7 +597,8 @@ body[class*='minecraft-']:not(.minecraft-home) main .member-row {
 }
 body[class*='minecraft-']:not(.minecraft-home) main .member-row strong,
 body.minecraft-members main .member-row span { font-size: 17px; font-weight: bold; }
-body.minecraft-members main .member-row:hover { background: #f5e5c6; }
+body.minecraft-members main .member-row:hover,
+body.minecraft-admin-members main .member-row:hover { background: #f5e5c6; }
 
 /* buttons and search bar, yes we have a search bar. */
 body[class*='minecraft-'] .button-link,

@@ -4,6 +4,7 @@
  */
 package com.mycompany.entity;
 
+import com.mycompany.enums.CatagoryEnum;
 import com.mycompany.enums.MediaTypeEnum;
 
 /**
@@ -14,24 +15,26 @@ import com.mycompany.enums.MediaTypeEnum;
  * @author m2505660
  */
 public class CatalogueEntity {
-    private int isbn;
-    private String Author;
+    private String isbn;
+    private String author;
     private String title;
     private MediaTypeEnum mediaType;
+    private CatagoryEnum catagory;
 
-    public CatalogueEntity(int isbn, String Author, String title, MediaTypeEnum mediaType) {
+    public CatalogueEntity(String isbn, String Author, String title, MediaTypeEnum mediaType, CatagoryEnum catagory) {
         this.isbn = isbn;
-        this.Author = Author;
+        this.author = Author;
         this.title = title;
         this.mediaType = mediaType;
+        this.catagory = catagory;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public String getTitle() {
@@ -40,6 +43,10 @@ public class CatalogueEntity {
 
     public MediaTypeEnum getMediaType() {
         return mediaType;
+    }
+    
+    public CatagoryEnum getCatagory(){
+        return catagory;
     }
 
 

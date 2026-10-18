@@ -31,7 +31,7 @@ public class MemberService {
 
     public List<MemberDto> getMemberDtos() throws SQLException {
 
-        List<MemberEntity> members = repository.finalAll();
+        List<MemberEntity> members = repository.findMembers();
         List<MemberDto> memberDtos = new ArrayList<>();
 
         for (MemberEntity member : members) {
@@ -45,6 +45,21 @@ public class MemberService {
             memberDtos.add(dto);
         }
 
+        return memberDtos;
+    }
+    public List<MemberDto> getAllMemberDtos() throws SQLException {
+        List<MemberEntity> members = repository.finalAll();
+        List<MemberDto> memberDtos = new ArrayList<>();
+        
+        for (MemberEntity member : members){
+            MemberDto dto = new MemberDto(
+            member.getId(),
+            member.getFirstName(),
+            member.getLastName());
+            
+            memberDtos.add(dto);
+        }
+        
         return memberDtos;
     }
 

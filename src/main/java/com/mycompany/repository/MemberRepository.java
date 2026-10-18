@@ -18,4 +18,5 @@ public interface MemberRepository {
 //this is the questiosn that we can ask about members, so far its just find everyone, later it will be delete, add or whatever.
     List<MemberEntity> finalAll() throws SQLException;
 
+    List<MemberEntity> findMembers() throws SQLException;
 }
