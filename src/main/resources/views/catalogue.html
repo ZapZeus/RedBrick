@@ -35,7 +35,6 @@
         </nav>
     </header>
 
-
     <main class="minecraft-content">
 
         <!-- search bar -->
@@ -64,92 +63,14 @@
 
         </section>
 
-        <!-- books are here, this is a placeholder for now. -->
+        <!-- books retrieved from Java -->
 
         <section class="minecraft-panel">
 
             <h2>Library Collection</h2>
 
             <div class="book-grid" id="book-grid">
-
-                <!-- book 1 -->
-
-                <div class="book-card">
-
-                    <h3>The Silent Forest</h3>
-
-                    <p>Emily Carter</p>
-
-                    <p>
-                        <strong>ISBN:</strong>
-                        978-0-321-14653-0
-                    </p>
-
-                    <p>
-                        <strong>Format:</strong>
-                        Physical
-                    </p>
-
-                    <span class="available">Available</span>
-
-                    <div class="book-actions">
-                        <button type="button">Borrow</button>
-                    </div>
-
-                </div>
-
-                <!-- book 2 -->
-
-                <div class="book-card">
-
-                    <h3>Rails of Destiny</h3>
-
-                    <p>Mark Holloway</p>
-
-                    <p>
-                        <strong>ISBN:</strong>
-                        978-1-4028-9462-6
-                    </p>
-
-                    <p>
-                        <strong>Format:</strong>
-                        eBook
-                    </p>
-
-                    <span class="borrowed">Borrowed</span>
-
-                    <div class="book-actions">
-                        <button type="button">Reserve</button>
-                    </div>
-
-                </div>
-
-                <!-- book 3 -->
-
-                <div class="book-card">
-
-                    <h3>Quantum Dreams</h3>
-
-                    <p>Sarah Linwood</p>
-
-                    <p>
-                        <strong>ISBN:</strong>
-                        0-596-52068-9
-                    </p>
-
-                    <p>
-                        <strong>Format:</strong>
-                        Physical
-                    </p>
-
-                    <span class="available">Available</span>
-
-                    <div class="book-actions">
-                        <button type="button">Borrow</button>
-                    </div>
-
-                </div>
-
+                <p>Loading books...</p>
             </div>
 
         </section>
@@ -195,6 +116,136 @@
     <footer class="minecraft-footer">
         <p>Red Bricks Library</p>
     </footer>
+
+    <script>
+
+        // gets the books from java
+        let allBooks = [];
+
+        // loads them.
+        async function loadBooks() {
+
+            const bookGrid = document.getElementById("book-grid");
+
+            try {
+
+                const response = await fetch("/api/catalogue");
+
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve book");
+                }
+
+                const book = await response.json();
+
+                allBooks = book ? [book] : [];
+
+                displayBooks(allBooks);
+
+            } catch (error) {
+
+                bookGrid.textContent = "Unable to load books.";
+
+                console.error("Catalogue loading error:", error);
+            }
+        }
+
+        // displays the books
+        function displayBooks(books) {
+
+            const bookGrid = document.getElementById("book-grid");
+
+            bookGrid.replaceChildren();
+
+            if (books.length === 0) {
+
+                const message = document.createElement("p");
+                message.textContent = "No books found.";
+
+                bookGrid.appendChild(message);
+                return;
+            }
+
+            books.forEach(book => {
+
+                // creates a book card for each, hopefully.
+                const card = document.createElement("div");
+                card.className = "book-card";
+
+                // book information - title
+                const title = document.createElement("h3");
+                title.textContent = book.title;
+
+                // book info - author
+                const author = document.createElement("p");
+                author.textContent = book.author;
+
+                // more book info
+                const isbn = document.createElement("p");
+                const isbnLabel = document.createElement("strong");
+                isbnLabel.textContent = "ISBN: ";
+
+                isbn.appendChild(isbnLabel);
+                isbn.appendChild(document.createTextNode(book.isbn));
+
+                // what type is it
+                const media = document.createElement("p");
+                const mediaLabel = document.createElement("strong");
+                mediaLabel.textContent = "Format: ";
+
+                media.appendChild(mediaLabel);
+                media.appendChild(document.createTextNode(book.mediaType));
+
+                // what catagory does it belong in
+                const category = document.createElement("p");
+                const categoryLabel = document.createElement("strong");
+                categoryLabel.textContent = "Category: ";
+
+                category.appendChild(categoryLabel);
+                category.appendChild(document.createTextNode(book.catagory));
+
+                // lets create the books.
+                card.appendChild(title);
+                card.appendChild(author);
+                card.appendChild(isbn);
+                card.appendChild(media);
+                card.appendChild(category);
+
+                // the add the card to the grid.
+                bookGrid.appendChild(card);
+
+            });
+        }
+
+        // a nifty little search bar
+        document.getElementById("catalogue-search")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const search = document
+                    .getElementById("book-search")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+                const filteredBooks = allBooks.filter(book => {
+
+                    return (
+                        book.title.toLowerCase().includes(search) ||
+                        book.author.toLowerCase().includes(search) ||
+                        book.isbn.toLowerCase().includes(search)
+                    );
+
+                });
+
+                displayBooks(filteredBooks);
+
+            });
+
+        // load all the books when the page opens.
+        loadBooks();
+
+    </script>
 
 </body>
 </html>
