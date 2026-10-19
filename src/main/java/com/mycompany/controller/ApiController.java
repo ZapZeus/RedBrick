@@ -82,7 +82,7 @@ public class ApiController {
                     JsonHandlerUtil.sendJson(exchange,405,"Method not allowed");
                     return;
                 }
-                JsonHandlerUtil.sendJson(exchange, 200, catalogueService.findFirstBook());
+                JsonHandlerUtil.sendJson(exchange, 200, catalogueService.findAllBooks());
             }
             catch (SQLException e){
                 JsonHandlerUtil.sendJson(exchange, 500, "Unable to retrieve book");

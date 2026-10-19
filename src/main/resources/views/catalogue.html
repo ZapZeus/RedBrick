@@ -135,9 +135,7 @@
                     throw new Error("Unable to retrieve book");
                 }
 
-                const book = await response.json();
-
-                allBooks = book ? [book] : [];
+                allBooks = await response.json();
 
                 displayBooks(allBooks);
 

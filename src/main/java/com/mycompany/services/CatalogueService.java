@@ -7,14 +7,16 @@ package com.mycompany.services;
 import com.mycompany.entity.CatalogueEntity;
 import com.mycompany.repository.CatalogueRepository;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
- *this should contain the service or logic for the books
- * this is the middleman for the book controller and the book repo
+ * this should contain the service or logic for the books this is the middleman
+ * for the book controller and the book repo
+ *
  * @author m2505660
  */
 public class CatalogueService {
-    
+
     private final CatalogueRepository repository;
 
     public CatalogueService(CatalogueRepository repository) {
@@ -24,6 +26,9 @@ public class CatalogueService {
     public CatalogueEntity findFirstBook() throws SQLException {
         return repository.findFirstBook();
     }
-    
-    
+
+    public List<CatalogueEntity> findAllBooks() throws SQLException {
+        return repository.findAllBooks();
+    }
+
 }

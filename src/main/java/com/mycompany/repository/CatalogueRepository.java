@@ -6,6 +6,7 @@ package com.mycompany.repository;
 
 import com.mycompany.entity.CatalogueEntity;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *Defines the database action that can be preformed with the books
@@ -17,4 +18,6 @@ import java.sql.SQLException;
  */
 public interface CatalogueRepository {
     CatalogueEntity findFirstBook() throws SQLException;
+    
+    List<CatalogueEntity> findAllBooks() throws SQLException;
 }

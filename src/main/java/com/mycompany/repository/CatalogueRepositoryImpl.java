@@ -11,31 +11,59 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author parks
  */
 public class CatalogueRepositoryImpl implements CatalogueRepository {
+
     private final DatabaseConnectionImpl database = new DatabaseConnectionImpl();
-    
+
     @Override
-    public CatalogueEntity findFirstBook() throws SQLException{
+    public CatalogueEntity findFirstBook() throws SQLException {
         String sql = "SELECT * FROM book_catalogue ORDER BY title LIMIT 1";
-        
-        try(Connection connection = database.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql);
-                ResultSet results = statement.executeQuery()){
-            
-            if (results.next()){
+
+        try (Connection connection = database.getConnection(); PreparedStatement statement = connection.prepareStatement(sql); ResultSet results = statement.executeQuery()) {
+
+            if (results.next()) {
                 return new CatalogueEntity(
-                results.getString("isbn"),
-                results.getString("author"),
-                results.getString("title"),
-                MediaTypeEnum.valueOf(results.getString("media_type")),
-                CatagoryEnum.valueOf(results.getString("category")));
+                        results.getString("isbn"),
+                        results.getString("author"),
+                        results.getString("title"),
+                        MediaTypeEnum.valueOf(results.getString("media_type")),
+                        CatagoryEnum.valueOf(results.getString("category")));
             }
         }
         return null;
     }
+
+    @Override
+    public List<CatalogueEntity> findAllBooks() throws SQLException {
+
+        List<CatalogueEntity> books = new ArrayList<>();
+
+        String sql = "SELECT * FROM book_catalogue ORDER BY title";
+
+        try (Connection connection = database.getConnection(); PreparedStatement statement = connection.prepareStatement(sql); ResultSet results = statement.executeQuery()) {
+
+            while (results.next()) {
+
+                CatalogueEntity book = new CatalogueEntity(
+                        results.getString("isbn"),
+                        results.getString("author"),
+                        results.getString("title"),
+                        MediaTypeEnum.valueOf(results.getString("media_type")),
+                        CatagoryEnum.valueOf(results.getString("category"))
+                );
+
+                books.add(book);
+            }
+        }
+
+        return books;
+    }
+
 }
