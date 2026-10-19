@@ -8,6 +8,6 @@ package com.mycompany.repository;
  *
  * @author parks
  */
-public class InventoryRepository {
+public interface InventoryRepository {
     
 }

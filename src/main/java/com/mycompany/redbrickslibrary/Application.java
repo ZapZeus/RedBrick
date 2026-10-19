@@ -19,12 +19,12 @@ import org.slf4j.LoggerFactory;
  */
 public class Application {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(Application.class);
 
     public static void start() throws IOException, SQLException {
 
-        HttpServer server
-                = HttpServer.create(new InetSocketAddress(8081), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(8081), 0);
 
         // Create WebController
         WebController webController = new WebController();

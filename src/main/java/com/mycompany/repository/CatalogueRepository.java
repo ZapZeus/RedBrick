@@ -4,6 +4,9 @@
  */
 package com.mycompany.repository;
 
+import com.mycompany.entity.CatalogueEntity;
+import java.sql.SQLException;
+
 /**
  *Defines the database action that can be preformed with the books
  * so it can find, add, update and delete books
@@ -12,6 +15,6 @@ package com.mycompany.repository;
  * and maybe even what users have what but we'll keep it simple to start with.
  * @author m2505660
  */
-public class CatalogueRepository {
-    
+public interface CatalogueRepository {
+    CatalogueEntity findFirstBook() throws SQLException;
 }
